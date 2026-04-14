@@ -6,14 +6,18 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class IitLab8Application {
 
-    public static void main(String[] args) throws TelegramApiException {
+    public static void main(String[] args) throws TelegramApiException, IOException {
         SpringApplication.run(IitLab8Application.class, args);
 
         TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
         botsApi.registerBot(new Bot());
+
+        MetricsConfig.configureMetrics();
     }
 
 }
